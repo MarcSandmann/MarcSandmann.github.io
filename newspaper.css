@@ -1,0 +1,148 @@
+/* Zeitungslayout für den Essay-Bereich. Setzt auf styles.css/site.css auf. */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* — Titelseite (essays.html) — */
+.newspaper-masthead {
+  text-align: center;
+  border-bottom: 4px double var(--color-divider);
+}
+.newspaper-masthead h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  max-width: none;
+}
+.newspaper-masthead p { margin: 0 auto; text-align: left; }
+
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.teaser {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-8);
+  border-right: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  text-decoration: none;
+  color: var(--color-text);
+}
+.teaser:nth-child(3n) { border-right: none; }
+.teaser-kicker {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.teaser h2 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0;
+}
+.teaser p {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  margin: 0;
+  flex: 1;
+}
+.teaser-meta { font-size: 12px; }
+
+.newspaper-empty {
+  padding: var(--space-8);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+/* — Artikelseite — */
+.article { padding: var(--space-8); max-width: 780px; margin: 0 auto; }
+.article-head {
+  text-align: center;
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.article-kicker {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+.article-head h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.1;
+  letter-spacing: 0;
+  max-width: none;
+  margin: 0 0 var(--space-3);
+}
+.article-byline {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.article-body {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.65;
+  column-width: 340px;
+  column-gap: var(--space-8);
+  column-rule: 1px solid var(--color-divider);
+}
+.article-body p { margin: 0 0 var(--space-4); }
+.article-body h2 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0;
+  column-span: all;
+  margin: var(--space-2) 0 var(--space-3);
+}
+.article-body blockquote {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-accent);
+  font-style: italic;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+}
+.article-body p.lede .dropcap {
+  float: left;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.8;
+  padding: 6px 6px 0 0;
+  color: var(--color-accent);
+}
+
+.article-footer {
+  max-width: 780px;
+  margin: var(--space-8) auto 0;
+  padding: var(--space-8);
+  border-top: 1px solid var(--color-divider);
+}
+
+@media (max-width: 900px) {
+  .teaser-grid { grid-template-columns: 1fr; }
+  .teaser { border-right: none; }
+  .article-body { column-width: auto; column-count: 1; }
+}
+
+@media (max-width: 640px) {
+  .article, .article-footer { padding: var(--space-6) var(--space-4); }
+  .article-body { font-size: 16px; }
+}

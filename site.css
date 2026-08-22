@@ -1,0 +1,226 @@
+/* Site-Layout — baut auf styles.css (Designsystem) auf. Enthält nur
+   Seitenstruktur, die kein Teil des Komponentensystems ist. */
+
+body {
+  background: var(--color-surface);
+}
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-lg);
+  min-height: 100vh;
+}
+
+.page-shell .nav {
+  padding: var(--space-4) var(--space-8);
+}
+
+/* — Hero — */
+.hero {
+  padding: var(--space-8) var(--space-8) var(--space-6);
+  border-bottom: 2px solid var(--color-divider);
+}
+.hero-eyebrow { margin: 0 0 var(--space-3); }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.02;
+  max-width: 22ch;
+  margin: 0 0 var(--space-4);
+}
+.hero p {
+  max-width: 60ch;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* — Verteiler (drei Spalten) — */
+.distributor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 2px solid var(--color-divider);
+}
+.distributor-col {
+  padding: var(--space-8);
+  border-right: 2px solid var(--color-divider);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.distributor-col:last-child { border-right: none; }
+.distributor-col-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.distributor-col-head h3 { margin: 0; }
+
+/* — Eintragsliste (geteilt von Startseite & Registerseiten) — */
+.entry-list { display: flex; flex-direction: column; }
+.entry {
+  display: block;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-divider);
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
+}
+.entry-meta {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* — Werdegang / Stationen (reine Namensliste, ohne Datum/Rolle) — */
+.werdegang {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border-bottom: 2px solid var(--color-divider);
+}
+.werdegang-label { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
+.werdegang-label h6 { margin: 0 0 var(--space-2); }
+.stations {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.station {
+  padding: var(--space-6) var(--space-8);
+  border-right: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+.stations .station:nth-child(4n) { border-right: none; }
+.stations .station:nth-child(n+5) { border-bottom: none; }
+
+/* — Kontakt-Banner — */
+.contact-banner {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: var(--space-8);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+.contact-banner h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 40px);
+  max-width: 24ch;
+  line-height: 1.05;
+  color: inherit;
+}
+.contact-banner a {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--color-bg);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-bg);
+  white-space: nowrap;
+}
+
+/* — Registerkopf (Titel + Kennzahlen) — */
+.register-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border-bottom: 2px solid var(--color-divider);
+}
+.register-intro { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
+.register-intro h1 { font-size: clamp(28px, 4vw, 52px); max-width: 20ch; margin: 0 0 var(--space-4); }
+.register-intro p { max-width: 52ch; margin: 0; font-size: 16px; }
+.register-stats { padding: var(--space-8); display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2); }
+.register-stat {
+  display: flex; justify-content: space-between;
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: 6px; font-size: 14px;
+}
+.register-stat:last-child { border-bottom: none; padding-bottom: 0; }
+
+.register-footer {
+  padding: var(--space-6) var(--space-8);
+  border-top: 2px solid var(--color-divider);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--space-3);
+}
+
+/* — Downloadbereich (Präsentationen) — */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 2px solid var(--color-divider);
+}
+.download-card {
+  padding: var(--space-8);
+  border-right: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.download-card:nth-child(2n) { border-right: none; }
+.download-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+}
+.download-empty {
+  padding: var(--space-8);
+  font-size: 14px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.download-empty code {
+  background: var(--color-surface);
+  padding: 2px 6px;
+  font-size: 13px;
+}
+
+/* — Kontaktseite — */
+.contact-page { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-6); max-width: 60ch; }
+.contact-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+.contact-field h6 { margin: 0 0 var(--space-1); }
+
+footer.site-footer {
+  padding: var(--space-6) var(--space-8);
+  border-top: 2px solid var(--color-divider);
+  font-size: 13px;
+}
+
+/* — Responsive — */
+@media (max-width: 900px) {
+  .distributor { grid-template-columns: 1fr; }
+  .distributor-col { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .distributor-col:last-child { border-bottom: none; }
+  .werdegang { grid-template-columns: 1fr; }
+  .werdegang-label { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .stations { grid-template-columns: repeat(2, 1fr); }
+  .stations .station { border-right: 1px solid var(--color-divider); }
+  .stations .station:nth-child(2n) { border-right: none; }
+  .stations .station:nth-child(n+7) { border-bottom: none; }
+  .register-header { grid-template-columns: 1fr; }
+  .register-intro { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .download-grid { grid-template-columns: 1fr; }
+  .download-card { border-right: none; }
+  .contact-fields { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .page-shell .nav { flex-wrap: wrap; row-gap: var(--space-2); }
+  .hero, .register-intro, .register-stats, .distributor-col, .werdegang-label, .station, .contact-banner, .contact-page, .download-card, .download-empty {
+    padding: var(--space-6) var(--space-4);
+  }
+  .stations { grid-template-columns: 1fr; }
+  .stations .station { border-right: none; }
+  .register-footer { padding: var(--space-4); }
+  .contact-banner { flex-direction: column; align-items: flex-start; }
+}
