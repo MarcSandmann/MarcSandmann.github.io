@@ -30,10 +30,10 @@ MONTHS = [
 
 NAV = """  <nav class="nav">
     <a class="nav-brand" href="{home}index.html" style="text-decoration:none">Marc Sandmann</a>
-    <a href="{home}hausarbeiten.html">Hausarbeiten</a>
+    <a href="{home}themen.html">Themen (Auswahl)</a>
     <a href="{home}praesentationen.html">Präsentationen</a>
     <a href="{home}essays.html"{current}>Essays</a>
-    <a href="{home}index.html#werdegang">Werdegang</a>
+    <a href="{home}stationen.html">Stationen</a>
     <a href="{home}kontakt.html">Kontakt</a>
   </nav>"""
 
@@ -184,8 +184,9 @@ def build_front_page(essays):
 {nav}
 
   <header class="hero newspaper-masthead">
-    <h6 class="text-muted">Essays</h6>
+    <h6 class="text-muted">Freie Essays</h6>
     <h1>Kürzere Texte zu Themen, die mich gerade beschäftigen.</h1>
+    <p>Nicht für einen Schein geschrieben, sondern weil die Frage offen geblieben ist. Erscheint unregelmäßig.</p>
   </header>
 
 {grid}

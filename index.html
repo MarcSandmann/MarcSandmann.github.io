@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marc Sandmann — Arbeiten, Vorträge, Essays</title>
-<meta name="description" content="Öffentliches Archiv: Hausarbeiten, Präsentationen und Essays.">
+<meta name="description" content="Öffentliches Archiv: Themen, Präsentationen und Essays.">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="site.css">
 </head>
@@ -13,28 +13,49 @@
 
   <nav class="nav">
     <a class="nav-brand" href="index.html" style="text-decoration:none">Marc Sandmann</a>
-    <a href="hausarbeiten.html">Hausarbeiten</a>
+    <a href="themen.html">Themen (Auswahl)</a>
     <a href="praesentationen.html">Präsentationen</a>
     <a href="essays.html">Essays</a>
-    <a href="#werdegang">Werdegang</a>
+    <a href="stationen.html">Stationen</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
 
-  <header class="hero">
-    <h6 class="text-muted hero-eyebrow">Öffentliches Archiv</h6>
-    <h1>Was ich schreibe, vortrage und lerne.</h1>
-    <p>Hausarbeiten, Ausbildungsstationen und Vorträge an einem Ort — nachlesbar statt verstreut über Ordner und Mailanhänge.</p>
+  <header class="hero-split">
+    <div class="hero-split-text">
+      <div>
+        <h6 class="hero-eyebrow">Öffentliches Archiv</h6>
+        <h1>Hier sammle ich meine Themen und stelle sie Kommiliton:innen, Dozierenden und Freund:innen zur Verfügung.</h1>
+      </div>
+      <p>Diese Seite sammelt, woran ich in Studium und Beruf gearbeitet habe: Hausarbeiten aus Soziologie, Kunstgeschichte, Germanistik und Geschichte, Folien aus Uni und Job sowie kürzere Essays zu Themen, die gerade auf dem Tisch liegen.</p>
+      <div class="hero-split-actions">
+        <a class="btn btn-primary" href="themen.html">Themen ansehen</a>
+        <a class="btn btn-secondary" href="essays.html">Essays lesen</a>
+      </div>
+    </div>
+    <div class="hero-split-media">
+      <div class="hero-split-photo">
+        <img src="assets/portrait-1286.jpg" srcset="assets/portrait-700.jpg 700w, assets/portrait-1286.jpg 1286w" sizes="(max-width: 900px) 100vw, 432px" alt="Marc Sandmann bei einem Vortrag">
+      </div>
+      <div class="hero-split-bio">
+        <h6>Marc Sandmann</h6>
+        <p>B.A. Wirtschaftspsychologie, abgeschlossen. Studium der Soziologie und Kunstgeschichte (Hauptfächer) sowie Germanistik und Geschichte (Nebenfächer) an der Universität Hamburg, laufend.</p>
+      </div>
+    </div>
   </header>
 
   <section class="distributor">
     <div class="distributor-col">
       <div class="distributor-col-head">
-        <h3>Hausarbeiten</h3>
-        <span class="text-muted" data-count="hausarbeiten"></span>
+        <h3>Themen (Auswahl)</h3>
+        <span class="text-muted">18</span>
       </div>
-      <p class="text-muted" style="margin:0;font-size:14px">Schriftliche Arbeiten aus dem Studium, mit Abstract und PDF.</p>
-      <div class="entry-list" data-home-list="hausarbeiten"></div>
-      <a class="btn btn-ghost" href="hausarbeiten.html" style="align-self:flex-start">Alle Hausarbeiten</a>
+      <p class="text-muted" style="margin:0;font-size:14px">Hausarbeiten, Forschungsprojekte und die Bachelorarbeit — nach Fächern geordnet, jeweils mit Abstract und PDF.</p>
+      <div class="entry-list">
+        <a class="entry" href="themen.html">Empirische Untersuchung zu Luhmanns Konzept der brauchbaren Illegalität<span class="entry-meta text-muted">Bachelorarbeit · Soziologie</span></a>
+        <a class="entry" href="themen.html">Der Baum des Lebens in mittelalterlichen Kreuzdarstellungen<span class="entry-meta text-muted">Kunstgeschichte</span></a>
+        <a class="entry" href="themen.html">Lessing<span class="entry-meta text-muted">Lessings Lustspiel „Die Juden" · Germanistik</span></a>
+      </div>
+      <a class="btn btn-ghost" href="themen.html" style="align-self:flex-start">Alle Themen</a>
     </div>
 
     <div class="distributor-col">
@@ -42,17 +63,17 @@
         <h3>Präsentationen</h3>
         <span class="text-muted" data-count="praesentationen"></span>
       </div>
-      <p class="text-muted" style="margin:0;font-size:14px">Folien aus Uni und Beruf zum Download.</p>
+      <p class="text-muted" style="margin:0;font-size:14px">Folien aus Seminaren, Kolloquien und dem Beruf. Jede Datei steht als PDF zum Download, mit Anlass und Datum.</p>
       <div class="entry-list" data-home-presentations></div>
       <a class="btn btn-ghost" href="praesentationen.html" style="align-self:flex-start">Zum Downloadbereich</a>
     </div>
 
     <div class="distributor-col">
       <div class="distributor-col-head">
-        <h3>Essays</h3>
+        <h3>Freie Essays</h3>
         <span class="text-muted"><!-- ESSAYS_COUNT_START -->2<!-- ESSAYS_COUNT_END --></span>
       </div>
-      <p class="text-muted" style="margin:0;font-size:14px">Kürzere Texte zu Themen, die mich gerade beschäftigen.</p>
+      <p class="text-muted" style="margin:0;font-size:14px">Kürzere Texte außerhalb des Seminarbetriebs — zu Lektüren, Ausstellungen und Beobachtungen aus der Arbeit.</p>
       <div class="entry-list">
         <!-- ESSAYS_LIST_START -->
         <a class="entry" href="essays/platzhalter-eins.html">Titel des Essays — Platzhalter<span class="entry-meta text-muted">1. August 2026</span></a>
@@ -63,25 +84,25 @@
     </div>
   </section>
 
-  <section class="werdegang" id="werdegang">
+  <section class="werdegang">
     <div class="werdegang-label">
-      <h6>Werdegang</h6>
-      <span class="text-muted" style="font-size:13px">Stationen im Überblick</span>
+      <h6>Stationen</h6>
+      <span class="text-muted" style="font-size:13px">Redaktion, Beratung, Archiv und Zivilgesellschaft</span>
     </div>
     <div class="stations">
-      <div class="station">Die Zeit (Hamburg)</div>
-      <div class="station">1789 Consulting (Frankfurt)</div>
-      <div class="station">Aon (Hamburg)</div>
-      <div class="station">Deutsches Literaturarchiv (Marbach)</div>
-      <div class="station">Scrum Master</div>
-      <div class="station">Betreuung von Freiwilligendiensten</div>
-      <div class="station">Vamos Friesoythe</div>
-      <div class="station">Zivildienst in einem psychiatrischen Wohnheim</div>
+      <div class="station"><span class="station-name">Die Zeit (Hamburg)</span><span class="station-year">2023</span></div>
+      <div class="station"><span class="station-name">1789 Consulting (Frankfurt)</span><span class="station-year">2024</span></div>
+      <div class="station"><span class="station-name">Aon (Hamburg)</span><span class="station-year">2024</span></div>
+      <div class="station"><span class="station-name">Deutsches Literaturarchiv (Marbach)</span><span class="station-year">seit 2026</span></div>
+      <div class="station"><span class="station-name">Scrum Master</span><span class="station-year">offen</span></div>
+      <div class="station"><span class="station-name">Betreuung von Freiwilligendiensten</span><span class="station-year">seit 2021</span></div>
+      <div class="station"><span class="station-name">Vamos Friesoythe</span><span class="station-year">offen</span></div>
+      <div class="station"><span class="station-name">Zivildienst in einem psychiatrischen Wohnheim</span><span class="station-year">2019/20</span></div>
     </div>
   </section>
 
   <section class="contact-banner">
-    <h2>Fragen zu einer Arbeit? Schreiben Sie mir.</h2>
+    <h2>Schreib mir unter</h2>
     <a href="mailto:info.marcsandmann@gmail.com">info.marcsandmann@gmail.com</a>
   </section>
 
@@ -90,7 +111,6 @@
   </footer>
 
 </div>
-<script src="hausarbeiten-data.js"></script>
 <script src="presentations-data.js"></script>
 <script src="main.js"></script>
 </body>

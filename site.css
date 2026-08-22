@@ -1,6 +1,14 @@
 /* Site-Layout — baut auf styles.css (Designsystem) auf. Enthält nur
    Seitenstruktur, die kein Teil des Komponentensystems ist. */
 
+:root {
+  /* Bewusste Erweiterung des (eigentlich einfarbig roten) Designsystems:
+     Rot bleibt Aktionen vorbehalten (Buttons, Kontaktbanner), Blau ordnet
+     und gliedert (Rubriken, Tags, Jahreszahlen, Trennlinien). */
+  --color-secondary: #2a4b8d;
+  --color-secondary-tint: #e4e9f4;
+}
+
 body {
   background: var(--color-surface);
 }
@@ -17,7 +25,7 @@ body {
   padding: var(--space-4) var(--space-8);
 }
 
-/* — Hero — */
+/* — Hero (einfach, z.B. Essays-Titelseite) — */
 .hero {
   padding: var(--space-8) var(--space-8) var(--space-6);
   border-bottom: 2px solid var(--color-divider);
@@ -34,6 +42,35 @@ body {
   font-size: 16px;
   margin: 0;
 }
+
+/* — Hero, geteilt (Startseite: Text + Porträt) — */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  border-bottom: 2px solid var(--color-divider);
+}
+.hero-split-text {
+  padding: var(--space-8);
+  border-right: 2px solid var(--color-divider);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.hero-split-text h6 { color: var(--color-secondary); margin: 0 0 var(--space-3); }
+.hero-split-text h1 { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.02; max-width: 26ch; margin: 0; }
+.hero-split-text p { font-size: 17px; max-width: 58ch; margin: 0; }
+.hero-split-actions { display: flex; gap: var(--space-3); }
+.hero-split-media { display: flex; flex-direction: column; }
+.hero-split-photo { flex: 1; min-height: 380px; overflow: hidden; }
+.hero-split-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.hero-split-bio {
+  padding: var(--space-6) var(--space-8);
+  border-top: 2px solid var(--color-divider);
+  background: var(--color-secondary-tint);
+}
+.hero-split-bio h6 { margin: 0 0 var(--space-2); }
+.hero-split-bio p { font-size: 14px; line-height: 1.5; margin: 0; }
 
 /* — Verteiler (drei Spalten) — */
 .distributor {
@@ -53,6 +90,8 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  border-bottom: 3px solid var(--color-secondary);
+  padding-bottom: var(--space-2);
 }
 .distributor-col-head h3 { margin: 0; }
 
@@ -76,7 +115,7 @@ body {
   margin-top: 2px;
 }
 
-/* — Werdegang / Stationen (reine Namensliste, ohne Datum/Rolle) — */
+/* — Stationen-Kurzraster (Startseite) — */
 .werdegang {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -92,12 +131,12 @@ body {
   padding: var(--space-6) var(--space-8);
   border-right: 1px solid var(--color-divider);
   border-bottom: 1px solid var(--color-divider);
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 15px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 4px;
 }
+.station-name { font-family: var(--font-heading); font-weight: 800; font-size: 15px; }
+.station-year { font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-secondary); }
 .stations .station:nth-child(4n) { border-right: none; }
 .stations .station:nth-child(n+5) { border-bottom: none; }
 
@@ -138,7 +177,11 @@ body {
 .register-intro { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
 .register-intro h1 { font-size: clamp(28px, 4vw, 52px); max-width: 20ch; margin: 0 0 var(--space-4); }
 .register-intro p { max-width: 52ch; margin: 0; font-size: 16px; }
-.register-stats { padding: var(--space-8); display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2); }
+.register-stats {
+  padding: var(--space-8);
+  background: var(--color-secondary-tint);
+  display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2);
+}
 .register-stat {
   display: flex; justify-content: space-between;
   border-bottom: 1px solid var(--color-divider);
@@ -152,6 +195,52 @@ body {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: var(--space-3);
 }
+
+/* — Themen: Fachgruppen — */
+.theme-group { border-bottom: 2px solid var(--color-divider); }
+.theme-group-head {
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-secondary-tint);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+.theme-group-head h3 { margin: 0; color: var(--color-secondary); font-size: 20px; }
+.theme-entries { padding: 0 var(--space-8) var(--space-4); display: flex; flex-direction: column; }
+.theme-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-6);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-divider);
+}
+.theme-entries .theme-entry:first-child { border-top: none; }
+.theme-entry-title { font-family: var(--font-heading); font-weight: 800; font-size: 15px; }
+.theme-entry-meta { display: block; font-size: 13px; margin-top: 2px; }
+.tag-outline-secondary {
+  flex: none;
+  display: inline-flex; align-items: center;
+  font-size: 11px; letter-spacing: 0.02em; padding: 3px 10px;
+  border: 1px solid var(--color-secondary); color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+/* — Themen: Detailseite — */
+.theme-detail-head { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 2px solid var(--color-divider); }
+.theme-detail-main { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
+.theme-detail-tags { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+.theme-detail-main h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.05; max-width: 18ch; margin: 0 0 var(--space-3); }
+.theme-detail-main .subtitle { font-size: 19px; max-width: 44ch; margin: 0; }
+.theme-detail-meta { padding: var(--space-8); background: var(--color-secondary-tint); display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-4); }
+.theme-detail-meta-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--color-divider); }
+.theme-detail-meta-row:last-child { border-bottom: none; }
+.theme-abstract { display: grid; grid-template-columns: 220px 1fr; border-bottom: 2px solid var(--color-divider); }
+.theme-abstract-label { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
+.theme-abstract-body { padding: var(--space-8); max-width: 68ch; }
+.theme-abstract-body p { font-size: 17px; line-height: 1.6; margin: 0 0 var(--space-3); }
+.theme-abstract-body p.text-muted { font-size: 15px; }
 
 /* — Downloadbereich (Präsentationen) — */
 .download-grid {
@@ -174,30 +263,73 @@ body {
   font-weight: 800;
   font-size: 16px;
 }
-.download-empty {
+.presentations-empty {
   padding: var(--space-8);
-  font-size: 14px;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  border-bottom: 2px solid var(--color-divider);
 }
-.download-empty code {
-  background: var(--color-surface);
-  padding: 2px 6px;
-  font-size: 13px;
+.presentations-empty-text h3 { margin: 0 0 var(--space-2); }
+.presentations-empty-text p { font-size: 15px; max-width: 46ch; margin: 0; }
+.presentations-empty-box {
+  background: var(--color-secondary-tint);
+  padding: var(--space-6);
+  border-left: 4px solid var(--color-secondary);
+  display: flex; flex-direction: column; gap: var(--space-3);
 }
+.presentations-empty-box h6 { margin: 0; }
+.presentations-empty-box ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+
+/* — Stationen (eigene Seite) — */
+.education-block {
+  background: var(--color-secondary-tint);
+  padding: var(--space-8);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-8);
+  border-bottom: 2px solid var(--color-divider);
+}
+.education-block h6 { margin: 0; }
+.education-items { display: flex; flex-direction: column; gap: var(--space-4); }
+.education-item-title { font-family: var(--font-heading); font-weight: 800; font-size: 17px; }
+.education-item-meta { font-size: 14px; }
+
+.station-group { display: grid; grid-template-columns: 220px 1fr; border-bottom: 2px solid var(--color-divider); }
+.station-group-label { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
+.station-group-label h6 { margin: 0; }
+.station-rows { display: flex; flex-direction: column; }
+.station-row {
+  padding: var(--space-4) var(--space-8);
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-6);
+  border-top: 1px solid var(--color-divider);
+}
+.station-rows .station-row:first-child { border-top: none; }
+.station-row-name { font-family: var(--font-heading); font-weight: 800; font-size: 16px; }
+.station-row-year { font-family: var(--font-heading); font-weight: 800; font-size: 14px; color: var(--color-secondary); text-align: right; white-space: nowrap; }
 
 /* — Kontaktseite — */
-.contact-page { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-6); max-width: 60ch; }
+.contact-split { display: grid; grid-template-columns: 1.4fr 1fr; border-bottom: 2px solid var(--color-divider); }
+.contact-split-text { padding: var(--space-8); border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: var(--space-4); }
+.contact-split-text h6 { color: var(--color-secondary); margin: 0; }
+.contact-split-text h1 { font-size: clamp(28px, 4vw, 48px); max-width: 16ch; margin: 0; }
+.contact-split-text > p { font-size: 16px; max-width: 52ch; margin: 0; }
+.contact-split-media { min-height: 380px; overflow: hidden; }
+.contact-split-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
 .contact-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 .contact-field h6 { margin: 0 0 var(--space-1); }
 
 footer.site-footer {
   padding: var(--space-6) var(--space-8);
-  border-top: 2px solid var(--color-divider);
+  border-top: 2px solid var(--color-secondary);
   font-size: 13px;
 }
 
 /* — Responsive — */
 @media (max-width: 900px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-split-text { border-right: none; border-bottom: 2px solid var(--color-divider); }
   .distributor { grid-template-columns: 1fr; }
   .distributor-col { border-right: none; border-bottom: 2px solid var(--color-divider); }
   .distributor-col:last-child { border-bottom: none; }
@@ -209,18 +341,34 @@ footer.site-footer {
   .stations .station:nth-child(n+7) { border-bottom: none; }
   .register-header { grid-template-columns: 1fr; }
   .register-intro { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .theme-detail-head { grid-template-columns: 1fr; }
+  .theme-detail-main { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .theme-abstract { grid-template-columns: 1fr; }
+  .theme-abstract-label { border-right: none; border-bottom: 2px solid var(--color-divider); }
   .download-grid { grid-template-columns: 1fr; }
   .download-card { border-right: none; }
+  .presentations-empty { grid-template-columns: 1fr; }
+  .education-block { grid-template-columns: 1fr; }
+  .station-group { grid-template-columns: 1fr; }
+  .station-group-label { border-right: none; border-bottom: 2px solid var(--color-divider); }
+  .contact-split { grid-template-columns: 1fr; }
+  .contact-split-text { border-right: none; border-bottom: 2px solid var(--color-divider); }
   .contact-fields { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
   .page-shell .nav { flex-wrap: wrap; row-gap: var(--space-2); }
-  .hero, .register-intro, .register-stats, .distributor-col, .werdegang-label, .station, .contact-banner, .contact-page, .download-card, .download-empty {
+  .hero, .hero-split-text, .hero-split-bio, .register-intro, .register-stats,
+  .distributor-col, .werdegang-label, .station, .contact-banner, .contact-page,
+  .download-card, .presentations-empty, .presentations-empty-box,
+  .theme-detail-main, .theme-detail-meta, .theme-abstract-label, .theme-abstract-body,
+  .theme-group-head, .theme-entries, .education-block, .station-group-label, .station-row,
+  .contact-split-text {
     padding: var(--space-6) var(--space-4);
   }
   .stations { grid-template-columns: 1fr; }
   .stations .station { border-right: none; }
   .register-footer { padding: var(--space-4); }
   .contact-banner { flex-direction: column; align-items: flex-start; }
+  .theme-entry { flex-direction: column; gap: 4px; }
 }
