@@ -35,18 +35,8 @@ function renderPresentations() {
     if (PRESENTATIONS.length === 0) {
       grid.innerHTML = `
         <div class="presentations-empty">
-          <div class="presentations-empty-text">
-            <h3>Der Bereich wird gerade aufgebaut.</h3>
-            <p>Die ersten Vorträge aus dem Studium werden derzeit für die Veröffentlichung durchgesehen. Wenn du eine bestimmte Präsentation suchst, frag sie gern direkt an.</p>
-          </div>
-          <div class="presentations-empty-box">
-            <h6>Was hier erscheinen wird</h6>
-            <ul>
-              <li>Seminarvorträge aus Soziologie und Kunstgeschichte</li>
-              <li>Ergebnispräsentationen aus Forschungsprojekten</li>
-              <li>Folien aus der Beratungs- und Redaktionsarbeit</li>
-            </ul>
-          </div>
+          <h3>Der Bereich wird gerade aufgebaut.</h3>
+          <p>Die ersten Vorträge aus dem Studium werden derzeit für die Veröffentlichung durchgesehen. Wenn du eine bestimmte Präsentation suchst, frag sie gern direkt an.</p>
         </div>`;
     } else {
       grid.className = "download-grid";

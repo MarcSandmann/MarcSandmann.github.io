@@ -61,9 +61,40 @@ body {
 .hero-split-text h1 { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.02; max-width: 26ch; margin: 0; }
 .hero-split-text p { font-size: 17px; max-width: 58ch; margin: 0; }
 .hero-split-actions { display: flex; gap: var(--space-3); }
+
+/* — Essay-Aufmacher im Hero — */
+.hero-essay-teaser {
+  display: block;
+  margin-top: var(--space-6);
+  border-top: 3px solid var(--color-secondary);
+  padding-top: var(--space-3);
+  max-width: 58ch;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.hero-essay-teaser-kicker {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.hero-essay-teaser-image { margin-top: var(--space-3); height: 180px; overflow: hidden; }
+.hero-essay-teaser-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-essay-teaser-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.15;
+  margin-top: var(--space-2);
+}
+.hero-essay-teaser-meta { font-size: 13px; margin-top: 4px; }
+
 .hero-split-media { display: flex; flex-direction: column; }
-.hero-split-photo { flex: 1; min-height: 380px; overflow: hidden; }
-.hero-split-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.hero-split-photo { flex: 1; min-height: 300px; max-height: 340px; overflow: hidden; }
+.hero-split-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
 .hero-split-bio {
   padding: var(--space-6) var(--space-8);
   border-top: 2px solid var(--color-divider);
@@ -177,17 +208,8 @@ body {
 .register-intro { padding: var(--space-8); border-right: 2px solid var(--color-divider); }
 .register-intro h1 { font-size: clamp(28px, 4vw, 52px); max-width: 20ch; margin: 0 0 var(--space-4); }
 .register-intro p { max-width: 52ch; margin: 0; font-size: 16px; }
-.register-stats {
-  padding: var(--space-8);
-  background: var(--color-secondary-tint);
-  display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2);
-}
-.register-stat {
-  display: flex; justify-content: space-between;
-  border-bottom: 1px solid var(--color-divider);
-  padding-bottom: 6px; font-size: 14px;
-}
-.register-stat:last-child { border-bottom: none; padding-bottom: 0; }
+.register-header.no-stats { grid-template-columns: 1fr; }
+.register-header.no-stats .register-intro { border-right: none; }
 
 .register-footer {
   padding: var(--space-6) var(--space-8);
@@ -265,22 +287,10 @@ body {
 }
 .presentations-empty {
   padding: var(--space-8);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: start;
   border-bottom: 2px solid var(--color-divider);
 }
-.presentations-empty-text h3 { margin: 0 0 var(--space-2); }
-.presentations-empty-text p { font-size: 15px; max-width: 46ch; margin: 0; }
-.presentations-empty-box {
-  background: var(--color-secondary-tint);
-  padding: var(--space-6);
-  border-left: 4px solid var(--color-secondary);
-  display: flex; flex-direction: column; gap: var(--space-3);
-}
-.presentations-empty-box h6 { margin: 0; }
-.presentations-empty-box ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.presentations-empty h3 { margin: 0 0 var(--space-2); }
+.presentations-empty p { font-size: 15px; max-width: 46ch; margin: 0; }
 
 /* — Stationen (eigene Seite) — */
 .education-block {
@@ -316,7 +326,7 @@ body {
 .contact-split-text h1 { font-size: clamp(28px, 4vw, 48px); max-width: 16ch; margin: 0; }
 .contact-split-text > p { font-size: 16px; max-width: 52ch; margin: 0; }
 .contact-split-media { min-height: 380px; overflow: hidden; }
-.contact-split-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.contact-split-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
 .contact-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 .contact-field h6 { margin: 0 0 var(--space-1); }
 
@@ -358,9 +368,9 @@ footer.site-footer {
 
 @media (max-width: 640px) {
   .page-shell .nav { flex-wrap: wrap; row-gap: var(--space-2); }
-  .hero, .hero-split-text, .hero-split-bio, .register-intro, .register-stats,
+  .hero, .hero-split-text, .hero-split-bio, .register-intro,
   .distributor-col, .werdegang-label, .station, .contact-banner, .contact-page,
-  .download-card, .presentations-empty, .presentations-empty-box,
+  .download-card, .presentations-empty,
   .theme-detail-main, .theme-detail-meta, .theme-abstract-label, .theme-abstract-body,
   .theme-group-head, .theme-entries, .education-block, .station-group-label, .station-row,
   .contact-split-text {
