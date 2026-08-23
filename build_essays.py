@@ -29,7 +29,7 @@ MONTHS = [
 ]
 
 NAV = """  <nav class="nav">
-    <a class="nav-brand" href="{home}index.html" style="text-decoration:none">Marc Sandmann</a>
+    <a class="nav-brand" href="{home}index.html" style="text-decoration:none">Startseite</a>
     <a href="{home}themen.html">Themen (Auswahl)</a>
     <a href="{home}praesentationen.html">Präsentationen</a>
     <a href="{home}essays.html"{current}>Essays</a>
