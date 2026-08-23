@@ -10,10 +10,16 @@ Was passiert:
   <!-- ESSAYS_COUNT_START/END --> und <!-- ESSAYS_LIST_START/END -->
   ersetzt, der Rest von index.html bleibt unverändert.
 
+- Der "Neuester Essay"-Aufmacher im Startseiten-Hero (zwischen
+  <!-- ESSAY_HERO_START/END -->) zeigt automatisch den Essay mit dem
+  neuesten Datum.
+
 Neuen Essay ergänzen: eine neue essays/<name>.md anlegen (Frontmatter mit
-title/datum/optional kicker, danach der Text in einfachem Markdown:
-## Zwischenüberschriften, *kursiv*, **fett**, > Zitate), dann dieses
-Skript erneut ausführen.
+title/datum/optional kicker/optional bild, danach der Text in einfachem
+Markdown: ## Zwischenüberschriften, *kursiv*, **fett**, > Zitate), dann
+dieses Skript erneut ausführen. `bild: assets/mein-bild.jpg` ist optional
+und wird nur für den Aufmacher des jeweils neuesten Essays verwendet —
+ohne `bild` erscheint der Aufmacher einfach ohne Bild.
 """
 
 import html
@@ -203,6 +209,35 @@ def build_front_page(essays):
 """
 
 
+def build_hero_teaser(essays):
+    if not essays:
+        return (
+            '<div class="hero-essay-teaser">\n'
+            '        <span class="hero-essay-teaser-kicker">Neuester Essay</span>\n'
+            '        <div class="hero-essay-teaser-title text-muted" style="font-weight:400">Bald verfügbar.</div>\n'
+            "      </div>"
+        )
+
+    newest = essays[0]
+    image_html = ""
+    if newest["bild"]:
+        src = html.escape(newest["bild"])
+        image_html = (
+            '\n        <div class="hero-essay-teaser-image">\n'
+            f'          <img src="{src}" alt="">\n'
+            "        </div>"
+        )
+
+    return (
+        f'<a class="hero-essay-teaser" href="essays/{newest["slug"]}.html">\n'
+        '        <span class="hero-essay-teaser-kicker">Neuester Essay</span>'
+        f"{image_html}\n"
+        f'        <div class="hero-essay-teaser-title">{html.escape(newest["title"])}</div>\n'
+        f'        <div class="hero-essay-teaser-meta text-muted">{newest["date_de"]} · {newest["minutes"]} min</div>\n'
+        "      </a>"
+    )
+
+
 def update_homepage(essays):
     index_path = ROOT / "index.html"
     text = index_path.read_text(encoding="utf-8")
@@ -210,6 +245,14 @@ def update_homepage(essays):
     text = re.sub(
         r"(<!-- ESSAYS_COUNT_START -->).*?(<!-- ESSAYS_COUNT_END -->)",
         rf"\g<1>{len(essays)}\g<2>",
+        text,
+        flags=re.DOTALL,
+    )
+
+    hero_teaser = build_hero_teaser(essays)
+    text = re.sub(
+        r"(<!-- ESSAY_HERO_START -->).*?(<!-- ESSAY_HERO_END -->)",
+        lambda m: f"{m.group(1)}\n      {hero_teaser}\n      {m.group(2)}",
         text,
         flags=re.DOTALL,
     )
@@ -252,6 +295,7 @@ def main():
             "slug": slug,
             "title": meta["title"],
             "kicker": meta.get("kicker", "Essay"),
+            "bild": meta.get("bild"),
             "datum": meta["datum"],
             "date_de": date_de,
             "minutes": minutes,
